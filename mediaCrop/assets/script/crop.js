@@ -1,49 +1,43 @@
- 
- 
- 
- window.addEventListener('load',function(){
-   let pic = document.querySelector('canvas');
-   
 
-   pic.height =600;
-   pic.width = 500;
-   pic.style.border = '2px solid red';
+  let counter =0,
+      mousepos = [];
 
 
-    let context = pic.getContext('2d');
-    let image = new Image();
+function writeMessage(canvas,message){
+var context = canvas.getContext('2d');
+context.clearRect(0, 0, canvas.width, canvas.height);
+context.font = '18pt Calibri';
+context.fillStyle = 'black';
+context.fillText(message, 10, 25);
+}
+function getMousePos(canvas, evt) {
+var rect = canvas.getBoundingClientRect();
+return {
+  x: evt.clientX - rect.left,
+  y: evt.clientY - rect.top
+};
+}
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+canvas.style.border = '2px solid green';
 
-    console.log(image);
+canvas.addEventListener('click',function(){
+  canvas.addEventListener('mousemove', function(evt) {
+var mousePos = getMousePos(canvas, evt);
+var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+context.fillStyle = 'red';
+context.fillRect(mousePos.x,mousePos.y,10,10);
 
-
-   image.src="./assets/pictures/drone-shot-high-angle-shot-man-2120084.jpg";
-
-   //callback, called when the image is loaded
-
-   image.addEventListener('load',function(){
-       //image(image,src,srcy)
-       //context.drawImage(image,0,0,image.naturalWidth/3,image.naturalWidth/3);
-      let tempCanvas =  document.createElement('canvas');
-
-      tempCanvas.width = 200;
-      tempCanvas.height = 300;
-      //Ref drawing api
-      var tempCanvasContext = tempCanvas.getContext('2d');
-      tempCanvasContext.drawImage(image,0,0,tempCanvas.width,tempCanvas.height);
-
-       var pattern = context.createPattern(image,'repeat');
-
-       context.fillStyle = pattern;
-
-       context.fillRect(310,200,300,200);
-
-       context.beginPath();
-       context.arc(110 ,110,100,0.,Math.PI*2);
-       context.fill();
-   });
-
-
-    
-
+writeMessage(canvas, message);
+ }, false);
+});
   
- });
+
+
+
+function point(){
+  //window.counter = window.counter+1;
+ counter = counter+1;
+
+  alert();
+}

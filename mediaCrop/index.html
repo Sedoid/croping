@@ -5,19 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VideoTrimm</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="assets/style/style.css" />
 
     <style>
-
+     
     </style>
     
 </head>
-<body>
+<body class="container">
+
+    <div style=' width:600px'>
+    <p>
+        <label for="amount">Price range:</label>
+        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    </p>
+       
+      <div id="slider-range"></div>
+    </div>
+
 
   <div style=' width:600px'> 
-    <input type = "range" value = "0" start="0" style='width:600px' step="0.1" class=".slider"/>
+    <input type = "range" value = "0" min="0" style='width:600px' step="0.01" class=".slider"/>
   </div>
-  <video src="assets/videos/kitchen.mp4" id="video" width="600" height="500"></video>
+  <video  id="video" src="assets/videos/big_buck_bunny.mp4" controls width="600" height="500"> </video>
 
   <div> 
     <button class="start"> Start Recording</button>
@@ -25,6 +38,18 @@
   </div>
   <video id="vid2" width="600" height="500" controls> </video>
   
+  <div style="padding: 50px">
+     <audio src="./assets/audios/French Lover [WWWW.VRJMUSIC.COM] Nelly Luv by Constellation Entertainment.mp3" id="audioSource" controls > 
+   
+    </audio>
+  </div>
+  <div>
+    <audio controls>
+        <source/>
+    </audio>
+  </div>
+ 
 <script src="assets/script/script.js"> </script>
 </body>
 </html>
+
